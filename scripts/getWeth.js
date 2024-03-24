@@ -1,7 +1,7 @@
 const { ethers, getNamedAccounts, network } = require("hardhat")
 const { networkConfig } = require("../helper-hardhat-config")
 
-const AMOUNT = ethers.utils.parseEther("0.1")
+const AMOUNT = ethers.utils.parseEther("0.02")
 
 async function getWeth() {
     const { deployer } = await getNamedAccounts()
@@ -11,7 +11,7 @@ async function getWeth() {
         deployer
     )
     const txResponse = await iWeth.deposit({
-        value: AMOUNT,
+        value: AMOUNT
     })
     await txResponse.wait(1)
     const wethBalance = await iWeth.balanceOf(deployer)
